@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
-import { getProblemCountDataByTag, getUserData ,getRecentSubmissionData, getActiveBadgeData, getBadgeData, getDataForSubmissionStat, getContestRankingAndHistry} from './controllers/userController.js';
+import { getProblemCountDataByTag,getUserData ,getRecentSubmissionData, getActiveBadgeData, getBadgeData, getDataForSubmissionStat, getContestRankingAndHistry, welcomeFunction} from './controllers/userController.js';
 
 dotenv.config();
 const app = express();
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 // Use user routes
-
+app.use('/api/welcome',welcomeFunction);
 app.use('/api/userData/:username', getUserData); 
 app.use('/api/solvedCntByTag/:username',getProblemCountDataByTag);
 app.use('/api/recentSubmissions/:username',getRecentSubmissionData);

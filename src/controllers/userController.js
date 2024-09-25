@@ -2,6 +2,13 @@ import { request } from 'graphql-request';
 import dotenv from 'dotenv';
 dotenv.config();
 
+export const welcomeFunction = async (req, res) => {
+  res.status(200).send({
+    message: "Welcome to LeetCode Express API."
+  });
+};
+
+
 export const getUserData = async (req, res) => {
     const LEETCODE_API_URL = process.env.LEETCODE_API_URL;
     const username = req.params.username;  // Get username from URL parameters
@@ -32,7 +39,6 @@ export const getUserData = async (req, res) => {
       const variables = { username };
       const data = await request(LEETCODE_API_URL, query, variables);
       const userData = data.matchedUser;
-      console.log(userData);
 
       return res.status(200).json({
         username: userData.username,
@@ -63,7 +69,6 @@ export const getRecentSubmissionData = async (req,res)=>{
   try{
     const variables= {username};
     const submissionData=await request(LEETCODE_API_URL,query,variables);
-    console.log(submissionData);
     return res.status(200).json({
       submissionData
     })
@@ -135,7 +140,7 @@ export const getDataForSubmissionStat= async (req,res)=>{
 //   try {
 //     const variables = { username };
 //     const contestRatingHistogramData = await request(LEETCODE_API_URL, query, variables);
-//     console.log(contestRatingHistogramData);
+//    
 
 //     // Return response with contest rating histogram data
 //     return res.status(200).json({
@@ -185,7 +190,7 @@ export const getBadgeData = async (req, res) => {
     const variables = { username };
     const badgeData = await request(LEETCODE_API_URL, query, variables);
     
-    console.log(badgeData);
+
 
     // Returning both badges and upcomingBadges in the response
     return res.status(200).json({
@@ -303,7 +308,7 @@ export const getContestRankingAndHistry = async (req,res) =>{
   try{
     const variables={username};
     const contestData= await request(LEETCODE_API_URL,query,variables);
-    console.log(contestData);
+
 
     return res.status(200).json({
       contestData
