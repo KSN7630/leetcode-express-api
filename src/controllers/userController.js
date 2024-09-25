@@ -6,12 +6,12 @@ export const welcomeFunction = async (req, res) => {
   res.status(200).send({
     message: "Welcome to LeetCode Express API.",
     routes :[{"To get user data " : "/api/userData/<your_username>"},
-      {"To get problem count data by tag " : "/api/solvedCntByTag/<your_username>"},
-      {"To get recent submission details" : "/api/recentSubmissions/<your_username>"},
-      {"To get data of active badges" : "/api/activeBadges/<your_username>"},
-      {"To get data of all badges" : "/api/badgeData/<your_username>"},
-      {"To get data to show submission stats" : "/api/dataForSubmissionStats/<your_username>"},
-      {"To get data of contest ranking and histry" : "/api/contestRankingAndHistry/<your_username>"},
+      {"To get problem count data by tag " : "/api/solvedCntByTag/your_username"},
+      {"To get recent submission details" : "/api/recentSubmissions/your_username"},
+      {"To get data of active badges" : "/api/activeBadges/your_username"},
+      {"To get data of all badges" : "/api/badgeData/your_username"},
+      {"To get data to show submission stats" : "/api/dataForSubmissionStats/your_username"},
+      {"To get data of contest ranking and histry" : "/api/contestRankingAndHistry/your_username"},
 
     ]
   });
