@@ -50,16 +50,20 @@ export const getUserData = async (req, res) => {
       const userData = data.matchedUser;
 
       return res.status(200).json({
-        username: userData.username,
-        profile: userData.profile,
-        githubUrl: userData.githubUrl,
-        twitterUrl: userData.twitterUrl,
-        linkedinUrl: userData.linkedinUrl,
-        languageProblemCount: userData.languageProblemCount,
+        data:{
+          username: userData.username,
+          profile: userData.profile,
+          githubUrl: userData.githubUrl,
+          twitterUrl: userData.twitterUrl,
+          linkedinUrl: userData.linkedinUrl,
+          languageProblemCount: userData.languageProblemCount
+        },
+        success:true        
     });
     } catch (error) {
         return res.status(error.response.status).json({
-            message :error.response.errors
+            error :error.response.errors,
+            success:false
         });
     }
 };
@@ -79,11 +83,13 @@ export const getRecentSubmissionData = async (req,res)=>{
     const variables= {username};
     const submissionData=await request(LEETCODE_API_URL,query,variables);
     return res.status(200).json({
-      submissionData
+      data:submissionData,
+      success:true
     })
   }catch(error) {
     return res.status(error.response.status).json({
-        message :error.response.errors
+        error :error.response.errors,
+        success:false
     });
 }
 };
@@ -120,11 +126,13 @@ export const getDataForSubmissionStat= async (req,res)=>{
     const dataForSubmissionStats = await request(LEETCODE_API_URL, query, variables);
     // Returning both badges and upcomingBadges in the response
     return res.status(200).json({
-      dataForSubmissionStats
+      data:dataForSubmissionStats,
+      success:true
     });
   }catch(error){
     return res.status(error.response.status).json({
-        message :error.response.errors
+        error:error.response.errors,
+        success:false
     });
   }
 }
@@ -204,11 +212,13 @@ export const getBadgeData = async (req, res) => {
     // Returning both badges and upcomingBadges in the response
     return res.status(200).json({
       badges: badgeData.matchedUser.badges,
-      upcomingBadges: badgeData.matchedUser.upcomingBadges
+      upcomingBadges: badgeData.matchedUser.upcomingBadges,
+      success:true
     });
   }catch(error){
     return res.status(error.response.status).json({
-        message :error.response.errors
+        error :error.response.errors,
+        success:false
     });
   }
 }
@@ -232,11 +242,13 @@ export const getActiveBadgeData=async (req,res)=>{
     const variables={username};
     const badgeData= await request(LEETCODE_API_URL,query,variables);
     return res.status(200).json({
-      badgeData
+      data:badgeData,
+      success:true
     })
   }catch(error){
     return res.status(error.response.status).json({
-      message :error.response.errors
+      error :error.response.errors,
+      success:false
   });
   }
 };
@@ -270,11 +282,13 @@ export const getProblemCountDataByTag = async (req, res) => {
     const data = await request(LEETCODE_API_URL, query, variables);
     const solvedData = data.matchedUser;
     return res.status(200).json({
-      solvedData
+      data:solvedData,
+      success:true
   });
   } catch (error) {
       return res.status(error.response.status).json({
-          message :error.response.errors
+          error :error.response.errors,
+          success:false
       });
   }
 };
@@ -320,11 +334,13 @@ export const getContestRankingAndHistry = async (req,res) =>{
 
 
     return res.status(200).json({
-      contestData
+      data:contestData,
+      success:true
     })
   }catch(error){
     return res.status(error.response.status).json({
-      message :error.response.errors
+      error :error.response.errors,
+      success:false
   });
 }
 };
