@@ -1,9 +1,9 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
+import { welcomeFunction } from './controllers/userController.js';
 
 import userRoute from "./routes/userRoutes.js"
-import { welcomeFunction } from './controllers/userController.js';
 
 dotenv.config();
 const app = express();
