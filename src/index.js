@@ -12,7 +12,7 @@ import userRoute from "./routes/userRoutes.js"
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 
 // Set up rate limiter: maximum of twenty requests per minute
 
